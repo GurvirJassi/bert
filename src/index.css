@@ -14,6 +14,7 @@
 }
 
 a {
+  padding-left: cm;
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -25,7 +26,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-self: end;
+  place-items: top;
   min-width: 320px;
   min-height: 100vh;
 }
