@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
+import axios from 'axios'
 import './App.css'
 
 
@@ -14,6 +15,17 @@ function App() {
       el.style.height = el.scrollHeight + 'px'; // grow to fit content
     }
   }, [text]); // re-run this whenever text changes
+
+    // Auto-save logic (debounced)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      axios.put('http://localhost:5000/api/notes/1', { content: text })
+        .then(res => console.log("Saved"))
+        .catch(err => console.error("Save failed", err))
+    }, 1000)
+
+    return () => clearTimeout(timeout) // reset debounce on new keystroke
+  }, [text])
 
   return (
     <>
