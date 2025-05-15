@@ -1,32 +1,37 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [text, setText] = useState('') // store the text
+  const textareaRef = useRef(null) // get access to the box
+
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (el) {
+      el.style.height = 'auto'; // reset height
+      el.style.height = el.scrollHeight + 'px'; // grow to fit content
+    }
+  }, [text]); // re-run this whenever text changes
 
   return (
-    <><div className='card'>
-      <div className="logo-container">
+    <>
+      <div className='top'>
           
-        <h1>Vite + React</h1>
-
-        <div className="card"></div> {/* used as padding */}
-
-        <a></a> {/* logo doesn't spin without this for some reason */}
-        <a href="https://react.dev" /*target="_blank"*/>
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+          <h1 className='selectable-heading' onClick={() => console.log(text)}>bert</h1> 
+        
+                 
+          <img src={reactLogo} className="logo" alt="React logo" />
       </div>
 
-      
-      
-      
-        empty as frick
-   
+      <textarea 
+        ref={textareaRef}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder ="What's on your mind"
+        className='container'/>
 
-      </div>
     </>
   )
 }

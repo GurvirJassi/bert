@@ -1,21 +1,17 @@
 #root {
   display: flex;
-  max-width: 1280px;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: left;
+  padding: 0 2rem;
+  box-sizing: border-box;
 }
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 45 px;
   will-change: transform;
-  transition: transform 0.1s ease-in;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 0em #141eeaaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 0em #9ce9ffaa);
+  transition: transform 60s ease-in;
+
 }
 
 @keyframes logo-spin {
@@ -28,23 +24,39 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 180s ease-in;
+  .logo {
+    animation: logo-spin infinite 60s ease-in;
   }
 }
 
-.card {
-  display: flex;
-  justify-self: flex-start;
-  justify-content: flex;
-  flex-direction: column;
+
+
+.container {
+  display: block;
+  height: fit-content;
+  resize: none;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  padding: 1rem;
+  border: 1px solid hsl(192, 3%, 35%);
 }
 
-.read-the-docs {
-  color: #000000;
+.top {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  padding: 1rem 2rem;
+  
 }
 
-.logo-container {
-  display: flex;
-  justify-self: flex-end;
+.note-box {
+  
+  border-radius: 8px;
+  resize: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 120px;
+  line-height: 1.5;
 }
+
